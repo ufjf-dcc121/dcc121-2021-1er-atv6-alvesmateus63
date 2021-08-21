@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roguelike</title>
+    <style>
+        td {
+            width: 30px;
+            height: 30px;
+            background-color: brown;
+        }
+        #hero {
+            color: lightblue;
+        }
+        .orcs {
+            color: lightgreen;
+        }
+        .treasure {
+            color: gold;
+        }
+        .parede {
+            font-size: 0;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td ></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="orcs">O</td>
+            <td></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td id="hero">@</td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="orcs">O</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+        </tr>
+        <tr>
+            <td class="orcs">O</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td></td>
+            <td></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="parede"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="parede"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="orcs">O</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="parede"></td>
+        </tr>
+        <tr>
+            <td class="parede"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="parede" class="treasure">T</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="parede"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td></td>
+            <td ></td>
+            <td ></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="orcs">O</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="parede"></td>
+            <td class="parede"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="treasure">D</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        
+    </table>
+</body>
+</html>
