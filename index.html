@@ -479,7 +479,10 @@
 
             // Adiciona ouvinte a cada célula
             celulas[i].addEventListener('click', (e) => {
-                console.log(celulas[i].classList);
+                celulas[i].classList.remove('parede');
+                celulas[i].classList.add('orcs');
+                celulas[i].classList.add('treasure');   
+                celulas[i].classList.add('parede')      
             });
 
         }
